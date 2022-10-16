@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    overflow: hidden;
 }
 
 .header > h1 {
@@ -58,4 +59,38 @@ body {
 .sidebar > h3 {
     text-align: center;
     font-size: 25px;
+}
+
+.todo-list > ul {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style-type: none;
+    padding: 0px;
+}
+
+.todo-list > ul > li {
+    background-color:#F5F6FA;
+    padding: 10px;
+    border-radius: 1rem;
+}
+
+.todo-list {
+    padding: 40px;
+    padding-top: 19px;
+}
+
+.complete-button {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+    border-radius: 50%;
+    border: 1px solid #EFEFEF;
+    background-color: white;
+}
+
+.add-task {
+    text-align: center;
+    color:rgba(0, 0, 0, 0.8);
 }
