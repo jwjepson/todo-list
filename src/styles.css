@@ -18,3 +18,14 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.body {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.sidebar {
+    grid-column: 1 / 2;
+    background-color: aqua;
+    height: 100vh;
+}
