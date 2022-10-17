@@ -148,6 +148,16 @@ body {
 #submit-task-button {
     width: 100px;
     height: 40px;
+    margin-left: 50%;
+    margin-top: 10px;
+    border-radius: 1rem;
+    background-color:#ddd;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+#submit-task-button:hover {
+    cursor: pointer;
 }
 
 .select-priority {
