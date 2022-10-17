@@ -169,3 +169,41 @@ body {
     margin-left: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
+
+.select-priority input[type="radio"] {
+    opacity: 0;
+    width: 0;
+    position: fixed;
+}
+
+.select-priority label {
+    display: inline-block;
+    background-color: #ddd;
+    padding: 5px 15px;
+    font-family: sans-serif, Arial;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.select-priority #low-priority:checked + label {
+    background-color: #59981A;
+    color: white;
+}
+
+.select-priority #medium-priority:checked + label {
+    background-color: #FFAC1C;
+    color: white;
+}
+
+.select-priority #high-priority:checked + label {
+    background-color: #FC0E0E;
+    color: white;
+}
+
+.select-priority input[type="radio"]:focus + label {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.select-priority input[type="radio"]:hover + label {
+    cursor: pointer;
+}
