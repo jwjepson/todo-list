@@ -108,8 +108,8 @@ body {
 }
 
 .add-task-form {
-    height: 440px;
-    width: 660px;
+    height: 340px;
+    width: 500px;
     background-color:#EFEFEF;
     position: fixed;
     left: 50%;
@@ -119,6 +119,8 @@ body {
     z-index: 1;
     border-radius: 5px;
     display: none;
+    padding: 15px;
+
 }
 
 .opacity-cover {
@@ -127,4 +129,43 @@ body {
     background-color: rgba(0,0,0,0.3);
     position: fixed;
     display: none;
+    backdrop-filter: blur(3px);
+}
+
+.add-task-form-data {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 18px;
+}
+
+#description {
+    width: 493px; 
+    height: 88px;
+    resize: none;
+}
+
+#submit-task-button {
+    width: 100px;
+    height: 40px;
+}
+
+.select-priority {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#title, #description {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+}
+
+#date {
+    border-radius: 1rem;
+    padding: 5px;
+    border: none;
+    margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
