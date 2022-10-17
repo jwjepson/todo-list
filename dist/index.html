@@ -39,7 +39,26 @@
             </ul>
         </div>
     </div>
-    <div class="add-task-form"></div>
+    <div class="add-task-form">
+        <form class="add-task-form-data">
+            <input type="text" id="title" name="title" placeholder="Title">
+            <textarea id="description" name="description" placeholder="Description"></textarea>
+            <div class="select-dueDate">
+                <label for="date">Due Date:</label>
+                <input type="date" id="date" name="date">
+            </div>
+            <div class="select-priority">
+                <p>Priority:</p>
+                <input type="radio" id="low-priority" name="priority" value="low">
+                <label for="low-priority">Low</label>
+                <input type="radio" id="medium-priority" name="priority" value="medium">
+                <label for="medium-priority">Medium</label>
+                <input type="radio" id="high-priority" name="priority" value="high">
+                <label for="high-priority">High</label>
+            </div>
+            <button type="submit" id="submit-task-button">Add Task</button>
+        </form>
+    </div>
     <div class="opacity-cover"></div>
     <div class="footer"></div>
 </body>
