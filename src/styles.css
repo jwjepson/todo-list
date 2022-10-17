@@ -1,6 +1,8 @@
 body {
     margin: 0;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .header > h1 {
@@ -76,9 +78,15 @@ body {
     border-radius: 1rem;
 }
 
+.todo-list > ul > li:hover {
+    cursor: pointer;
+}
+
 .todo-list {
     padding: 40px;
     padding-top: 19px;
+    display: flex;
+    flex-direction: column;
 }
 
 .complete-button {
@@ -93,4 +101,30 @@ body {
 .add-task {
     text-align: center;
     color:rgba(0, 0, 0, 0.8);
+}
+
+.add-task:hover {
+    cursor: pointer;
+}
+
+.add-task-form {
+    height: 440px;
+    width: 660px;
+    background-color:#EFEFEF;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 220px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1;
+    border-radius: 5px;
+    display: none;
+}
+
+.opacity-cover {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    display: none;
 }
