@@ -3,17 +3,34 @@ import {Task} from "./todos";
 
 const defaultTasks = [];
 
-const task1 = new Task("Test Task", "This is a test Task", "10/27/2022", "high");
-defaultTasks.push(task1);
+function renderTasks() {
+    const todoItems = document.querySelector(".todo-items");
+    defaultTasks.forEach((task) => {
+        const el = document.createElement("li");
+        el.textContent = task.description;
+        todoItems.appendChild(el);
+    });
+}
 
-const todoItems = document.querySelector(".todo-items");
+const submitTaskButton = document.querySelector("#submit-task-button");
+submitTaskButton.addEventListener("click", () => {
+    const title = document.querySelector("#title").value;
+    const description = document.querySelector("#description").value;
+    const dueDate = document.querySelector("#date").value;
+    const priority = document.querySelector("input[name=priority]:checked").value;
+    const task = new Task(title, description, dueDate, priority);
+    defaultTasks.push(task);
+    taskForm.style.display = "none";
+    taskOverlay.style.display = "none";
+    renderTasks();
+})
 
-defaultTasks.forEach((task) => {
-    const el = document.createElement("li");
-    el.textContent = task.description;
-    todoItems.appendChild(el);
-});
 
+
+
+
+
+// Displaying the Add Task popup
 const addTaskButton = document.querySelector(".add-task");
 const taskForm = document.querySelector(".add-task-form");
 const taskOverlay = document.querySelector(".opacity-cover");
