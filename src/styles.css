@@ -72,7 +72,7 @@ body {
     padding: 0px;
 }
 
-.todo-list > ul > li {
+.task-item {
     background-color:#F5F6FA;
     padding: 10px;
     border-radius: 1rem;
