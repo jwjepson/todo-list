@@ -72,7 +72,7 @@ body {
     padding: 0px;
 }
 
-.task-item {
+.task-template, .task {
     background-color:#F5F6FA;
     padding: 10px;
     border-radius: 1rem;
