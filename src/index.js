@@ -5,10 +5,15 @@ const defaultTasks = [];
 
 function renderTasks() {
     const todoItems = document.querySelector(".todo-items");
+    const docFrag = document.createDocumentFragment();
     defaultTasks.forEach((task) => {
-        const el = document.createElement("li");
-        el.textContent = task.description;
-        todoItems.appendChild(el);
+        const li = document.querySelector(".task-item").cloneNode(true);
+        li.querySelector(".task-title").textContent = task.title;
+        li.querySelector(".task-description").textContent = task.description;
+        li.querySelector(".task-dueDate").textContent = task.dueDate;
+        li.style.display = "flex";
+        docFrag.appendChild(li);
+        todoItems.appendChild(docFrag);
     });
 }
 
