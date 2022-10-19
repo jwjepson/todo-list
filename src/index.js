@@ -3,23 +3,40 @@ import {Task} from "./todos";
 
 const defaultTasks = [];
 
-function renderTasks() {
-    const todoItems = document.querySelector(".todo-items");
+function clearTasks() {
     const tasks = document.querySelectorAll(".task");
     tasks.forEach((task) => {
         task.remove();
-    })
+    });
+};
+
+function markComplete(button) {
+    if (button.classList.contains("checked")) {
+        button.classList.remove("checked");
+    }
+    else {
+        button.classList.add("checked");
+    }
+}
+
+function renderTasks() {
+    const todoItems = document.querySelector(".todo-items");
+    clearTasks();
     defaultTasks.reverse().forEach((task) => {
         const li = document.querySelector(".task-template").cloneNode(true);
         const docFrag = document.createDocumentFragment();
         li.querySelector(".task-title").textContent = task.title;
         li.querySelector(".task-description").textContent = task.description;
         li.querySelector(".task-dueDate").textContent = task.dueDate;
+        li.querySelector(".task-complete-button").addEventListener("click", () => {
+            markComplete(li.querySelector(".task-complete-button"));
+        });
         li.style.display = "flex";
         li.classList.remove("task-template");
         li.classList.add("task");
         docFrag.appendChild(li);
         todoItems.appendChild(docFrag);
+        console.log(defaultTasks);
     });
 }
 
@@ -29,7 +46,7 @@ submitTaskButton.addEventListener("click", () => {
     const description = document.querySelector("#description").value;
     const dueDate = document.querySelector("#date").value;
     const priority = document.querySelector("input[name=priority]:checked").value;
-    const task = new Task(title, description, dueDate, priority);
+    const task = new Task(title, description, dueDate, priority, "incomplete");
     defaultTasks.push(task);
     taskForm.style.display = "none";
     taskOverlay.style.display = "none";
@@ -50,3 +67,4 @@ addTaskButton.addEventListener("click", () => {
     taskForm.style.display = "block";
     taskOverlay.style.display = "block";
 });
+
