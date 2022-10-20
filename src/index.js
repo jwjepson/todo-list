@@ -17,18 +17,16 @@ function clearTasks() {
 function renderTasks() {
     const todoItems = document.querySelector(".todo-items");
     clearTasks();
-    defaultTasks.reverse().forEach((task) => {
+    defaultTasks.forEach((task, index) => {
         const li = document.querySelector(".task-template").cloneNode(true);
         const docFrag = document.createDocumentFragment();
         li.querySelector(".task-title").textContent = task.title;
         li.querySelector(".task-description").textContent = task.description;
         li.querySelector(".task-dueDate").textContent = task.dueDate;
-        li.querySelector(".task-complete-button").addEventListener("click", () => {
-            markComplete(li.querySelector(".task-complete-button"));
-        });
+        li.querySelector(".task-complete-button").addEventListener("click", markComplete);
         li.style.display = "flex";
-        li.classList.remove("task-template");
-        li.classList.add("task");
+        li.className = "task";
+        li.dataset.index = index;
         docFrag.appendChild(li);
         todoItems.appendChild(docFrag);
         console.log(defaultTasks);
@@ -60,3 +58,4 @@ addTaskButton.addEventListener("click", () => {
     taskOverlay.style.display = "block";
 });
 
+export {defaultTasks};
