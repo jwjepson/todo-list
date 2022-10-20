@@ -1,8 +1,11 @@
 import "./styles.css";
 import {Task} from "./todos";
+import {markComplete} from "./complete";
 
 const defaultTasks = [];
 
+
+// Clear from DOM
 function clearTasks() {
     const tasks = document.querySelectorAll(".task");
     tasks.forEach((task) => {
@@ -10,15 +13,7 @@ function clearTasks() {
     });
 };
 
-function markComplete(button) {
-    if (button.classList.contains("checked")) {
-        button.classList.remove("checked");
-    }
-    else {
-        button.classList.add("checked");
-    }
-}
-
+// Render all the tasks inside array
 function renderTasks() {
     const todoItems = document.querySelector(".todo-items");
     clearTasks();
@@ -40,6 +35,7 @@ function renderTasks() {
     });
 }
 
+// Add a new task
 const submitTaskButton = document.querySelector("#submit-task-button");
 submitTaskButton.addEventListener("click", () => {
     const title = document.querySelector("#title").value;
@@ -52,10 +48,6 @@ submitTaskButton.addEventListener("click", () => {
     taskOverlay.style.display = "none";
     renderTasks();
 })
-
-
-
-
 
 
 // Displaying the Add Task popup
