@@ -26,6 +26,10 @@ function renderTasks() {
         li.querySelector(".task-complete-button").addEventListener("click", markComplete);
         li.style.display = "flex";
         li.className = "task";
+        if (task.status == "complete") {
+            li.classList.add("complete");
+            li.querySelector(".task-complete-button").classList.add("checked");
+        }
         li.dataset.index = index;
         docFrag.appendChild(li);
         todoItems.appendChild(docFrag);
