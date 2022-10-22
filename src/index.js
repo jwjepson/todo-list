@@ -2,6 +2,7 @@ import "./styles.css";
 import {Task} from "./todos";
 import {markComplete} from "./complete";
 import {editTask} from "./edit";
+import {deleteTask} from "./delete";
 
 const defaultTasks = [];
 
@@ -26,6 +27,7 @@ function renderTasks() {
         li.querySelector(".task-dueDate").textContent = task.dueDate;
         li.querySelector(".task-complete-button").addEventListener("click", markComplete);
         li.querySelector("#edit-button").addEventListener("click", editTask);
+        li.querySelector("#delete-button").addEventListener("click", deleteTask);
         li.style.display = "flex";
         li.className = "task";
         if (task.status == "complete") {
