@@ -189,7 +189,7 @@ body {
     position: fixed;
 }
 
-.select-priority label {
+.select-priority label, .task-priority {
     display: inline-block;
     background-color: #ddd;
     padding: 5px 15px;
@@ -198,17 +198,17 @@ body {
     border-radius: 4px;
 }
 
-.select-priority #low-priority:checked + label {
+.select-priority #Low-priority:checked + label {
     background-color: #59981A;
     color: white;
 }
 
-.select-priority #medium-priority:checked + label {
+.select-priority #Medium-priority:checked + label {
     background-color: #FFAC1C;
     color: white;
 }
 
-.select-priority #high-priority:checked + label {
+.select-priority #High-priority:checked + label {
     background-color: #FC0E0E;
     color: white;
 }
@@ -261,4 +261,9 @@ body {
     font-size: 15px;
     color:#FC0E0E;  
     margin-right: 15px; 
+}
+
+.task-priority {
+    margin-right: 15px;
+    color: white;
 }
