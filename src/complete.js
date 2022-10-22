@@ -15,8 +15,6 @@ function markComplete() {
         taskButton.classList.remove("checked");
         task_el.classList.remove("complete");       
     }
-    console.log(task);
-    console.log(task_el);
 }
 
 export {markComplete};
