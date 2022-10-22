@@ -61,6 +61,7 @@ addTask.addEventListener("click", () => {
         taskOverlay.style.display = "none";
         renderTasks();
         form.reset();
+        addTaskButton.remove();
     })
     form.appendChild(addTaskButton);
     taskForm.style.display = "block";
