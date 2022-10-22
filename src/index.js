@@ -15,6 +15,18 @@ function clearTasks() {
     });
 };
 
+function setPriorityColor(priority) {
+    if (priority == "Low") {
+        return "#59981A";
+    }
+    else if (priority == "Medium") {
+        return "#FFAC1C";
+    }
+    else {
+        return "#FC0E0E";
+    }
+};
+
 // Render all the tasks inside array
 function renderTasks() {
     const todoItems = document.querySelector(".todo-items");
@@ -25,6 +37,8 @@ function renderTasks() {
         li.querySelector(".task-title").textContent = task.title;
         li.querySelector(".task-description").textContent = task.description;
         li.querySelector(".task-dueDate").textContent = task.dueDate;
+        li.querySelector(".task-priority").textContent = task.priority;
+        li.querySelector(".task-priority").style.backgroundColor = setPriorityColor(task.priority);
         li.querySelector(".task-complete-button").addEventListener("click", markComplete);
         li.querySelector("#edit-button").addEventListener("click", editTask);
         li.querySelector("#delete-button").addEventListener("click", deleteTask);
