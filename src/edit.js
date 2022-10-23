@@ -1,4 +1,4 @@
-import {defaultTasks, renderTasks} from "./index";
+import {defaultTasks, renderAllTasks} from "./index";
 
 
 function editTask() {
@@ -36,7 +36,7 @@ function editTask() {
         taskOverlay.style.display = "none";
         editTaskButton.remove();
         form.reset();
-        renderTasks();
+        renderAllTasks();
     });
 }
 
