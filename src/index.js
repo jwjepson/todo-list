@@ -3,6 +3,8 @@ import {Task} from "./todos";
 import {markComplete} from "./complete";
 import {editTask} from "./edit";
 import {deleteTask} from "./delete";
+import { isToday } from 'date-fns'
+import { parseISO } from 'date-fns'
 
 const defaultTasks = [];
 
@@ -28,7 +30,7 @@ function setPriorityColor(priority) {
 };
 
 // Render all the tasks inside array
-function renderTasks() {
+function renderAllTasks() {
     const todoItems = document.querySelector(".todo-items");
     clearTasks();
     defaultTasks.forEach((task, index) => {
@@ -75,7 +77,7 @@ addTask.addEventListener("click", () => {
         defaultTasks.push(task);
         taskForm.style.display = "none";
         taskOverlay.style.display = "none";
-        renderTasks();
+        renderAllTasks();
         form.reset();
         addTaskButton.remove();
     })
@@ -84,4 +86,42 @@ addTask.addEventListener("click", () => {
     taskOverlay.style.display = "block";
 });
 
-export {defaultTasks, renderTasks};
+const allTasks = document.querySelector(".all-tasks");
+allTasks.addEventListener("click", () => {
+    renderAllTasks();
+});
+
+const todaysTasks = document.querySelector(".todays-tasks");
+todaysTasks.addEventListener("click", renderTodaysTasks);
+
+
+function renderTodaysTasks() {
+    const todaysDate = new Date();
+    const todoItems = document.querySelector(".todo-items");
+    clearTasks();
+    defaultTasks.forEach((task, index) => {
+        if (isToday(parseISO(task.dueDate))) {
+            const li = document.querySelector(".task-template").cloneNode(true);
+            const docFrag = document.createDocumentFragment();
+            li.querySelector(".task-title").textContent = task.title;
+            li.querySelector(".task-description").textContent = task.description;
+            li.querySelector(".task-dueDate").textContent = task.dueDate;
+            li.querySelector(".task-priority").textContent = task.priority;
+            li.querySelector(".task-priority").style.backgroundColor = setPriorityColor(task.priority);
+            li.querySelector(".task-complete-button").addEventListener("click", markComplete);
+            li.querySelector("#edit-button").addEventListener("click", editTask);
+            li.querySelector("#delete-button").addEventListener("click", deleteTask);
+            li.style.display = "flex";
+            li.className = "task";
+            if (task.status == "complete") {
+                li.classList.add("complete");
+                li.querySelector(".task-complete-button").classList.add("checked");
+            }
+            li.dataset.index = index;
+            docFrag.appendChild(li);
+            todoItems.appendChild(docFrag);
+        }
+    });
+}
+
+export {defaultTasks, renderAllTasks};
