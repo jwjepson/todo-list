@@ -5,6 +5,7 @@ import {editTask} from "./edit";
 import {deleteTask} from "./delete";
 import { isToday } from 'date-fns'
 import { parseISO } from 'date-fns'
+import {renderTasks} from "./renderTasks";
 
 const defaultTasks = [];
 
@@ -31,28 +32,9 @@ function setPriorityColor(priority) {
 
 // Render all the tasks inside array
 function renderAllTasks() {
-    const todoItems = document.querySelector(".todo-items");
     clearTasks();
     defaultTasks.forEach((task, index) => {
-        const li = document.querySelector(".task-template").cloneNode(true);
-        const docFrag = document.createDocumentFragment();
-        li.querySelector(".task-title").textContent = task.title;
-        li.querySelector(".task-description").textContent = task.description;
-        li.querySelector(".task-dueDate").textContent = task.dueDate;
-        li.querySelector(".task-priority").textContent = task.priority;
-        li.querySelector(".task-priority").style.backgroundColor = setPriorityColor(task.priority);
-        li.querySelector(".task-complete-button").addEventListener("click", markComplete);
-        li.querySelector("#edit-button").addEventListener("click", editTask);
-        li.querySelector("#delete-button").addEventListener("click", deleteTask);
-        li.style.display = "flex";
-        li.className = "task";
-        if (task.status == "complete") {
-            li.classList.add("complete");
-            li.querySelector(".task-complete-button").classList.add("checked");
-        }
-        li.dataset.index = index;
-        docFrag.appendChild(li);
-        todoItems.appendChild(docFrag);
+        renderTasks(task, index);
     });
 }
 
@@ -96,32 +78,12 @@ todaysTasks.addEventListener("click", renderTodaysTasks);
 
 
 function renderTodaysTasks() {
-    const todaysDate = new Date();
-    const todoItems = document.querySelector(".todo-items");
     clearTasks();
     defaultTasks.forEach((task, index) => {
         if (isToday(parseISO(task.dueDate))) {
-            const li = document.querySelector(".task-template").cloneNode(true);
-            const docFrag = document.createDocumentFragment();
-            li.querySelector(".task-title").textContent = task.title;
-            li.querySelector(".task-description").textContent = task.description;
-            li.querySelector(".task-dueDate").textContent = task.dueDate;
-            li.querySelector(".task-priority").textContent = task.priority;
-            li.querySelector(".task-priority").style.backgroundColor = setPriorityColor(task.priority);
-            li.querySelector(".task-complete-button").addEventListener("click", markComplete);
-            li.querySelector("#edit-button").addEventListener("click", editTask);
-            li.querySelector("#delete-button").addEventListener("click", deleteTask);
-            li.style.display = "flex";
-            li.className = "task";
-            if (task.status == "complete") {
-                li.classList.add("complete");
-                li.querySelector(".task-complete-button").classList.add("checked");
-            }
-            li.dataset.index = index;
-            docFrag.appendChild(li);
-            todoItems.appendChild(docFrag);
+            renderTasks(task, index);
         }
-    });
+    })
 }
 
-export {defaultTasks, renderAllTasks};
+export {defaultTasks, renderAllTasks, setPriorityColor};
