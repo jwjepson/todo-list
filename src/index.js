@@ -2,6 +2,7 @@ import "./styles.css";
 import {Task} from "./todos";
 import {isToday, parseISO, isThisWeek, isFuture} from 'date-fns'
 import {renderTasks} from "./renderTasks";
+import {addProject} from "./addProject";
 
 const defaultTasks = [];
 document.querySelector(".all-tasks").classList.add("current-page");
@@ -89,6 +90,8 @@ todaysTasks.addEventListener("click", renderTodaysTasks);
 const upcomingTasks = document.querySelector(".upcoming-tasks");
 upcomingTasks.addEventListener("click", renderUpcomingTasks);
 
+const addProjectButton = document.querySelector("#add-project");
+addProjectButton.addEventListener("click", addProject);
 
 function renderTodaysTasks() {
     clearTasks();
