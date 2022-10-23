@@ -1,10 +1,6 @@
 import "./styles.css";
 import {Task} from "./todos";
-import {markComplete} from "./complete";
-import {editTask} from "./edit";
-import {deleteTask} from "./delete";
-import { isToday } from 'date-fns'
-import { parseISO } from 'date-fns'
+import {isToday, parseISO, isThisWeek, isFuture} from 'date-fns'
 import {renderTasks} from "./renderTasks";
 
 const defaultTasks = [];
@@ -76,6 +72,9 @@ allTasks.addEventListener("click", () => {
 const todaysTasks = document.querySelector(".todays-tasks");
 todaysTasks.addEventListener("click", renderTodaysTasks);
 
+const upcomingTasks = document.querySelector(".upcoming-tasks");
+upcomingTasks.addEventListener("click", renderUpcomingTasks);
+
 
 function renderTodaysTasks() {
     clearTasks();
@@ -84,6 +83,15 @@ function renderTodaysTasks() {
             renderTasks(task, index);
         }
     })
+}
+
+function renderUpcomingTasks() {
+    clearTasks();
+    defaultTasks.forEach((task, index) => {
+        if (isFuture(parseISO(task.dueDate))) {
+            renderTasks(task, index);
+        }
+    });
 }
 
 export {defaultTasks, renderAllTasks, setPriorityColor};
