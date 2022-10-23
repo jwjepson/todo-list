@@ -52,7 +52,7 @@ body {
     border-radius: 1rem;
 }
 
-.nav > li:hover {
+.nav > li:hover, .all-tasks.current-page, .todays-tasks.current-page, .upcoming-tasks.current-page {
     background-color: #FF3B3F;
     color: white;
     cursor: pointer;
