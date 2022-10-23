@@ -63,7 +63,7 @@ body {
     border-radius: 1rem;
 }
 
-.nav > li:hover, .all-tasks.current-page, .todays-tasks.current-page, .upcoming-tasks.current-page {
+.nav > li:hover, .all-tasks.current-page, .todays-tasks.current-page, .upcoming-tasks.current-page, #add-project:hover, .add-button:hover, .cancel-button:hover {
     background-color: #FF3B3F;
     color: white;
     cursor: pointer;
@@ -289,8 +289,26 @@ body {
     margin-bottom: 10px;
 }
 
-#add-project:hover {
-    background-color:#FF3B3F;
-    color: white;
-    cursor: pointer;
+.projectInput {
+    padding: 7px;
+    margin-left: 40px;
+    border-radius: 5px;
+    border: none;
+}
+
+.add-button {
+    padding: 10px;
+    margin-left: 63px;
+    margin-top: 20px;
+    background-color:#ddd;
+    border: none;
+    width: 60px;
+}
+
+.cancel-button {
+    margin-left: 20px;
+    padding: 10px;
+    background-color:#ddd;
+    border: none;
+    width: 60px;
 }
