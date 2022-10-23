@@ -4,7 +4,7 @@ import {isToday, parseISO, isThisWeek, isFuture} from 'date-fns'
 import {renderTasks} from "./renderTasks";
 
 const defaultTasks = [];
-
+document.querySelector(".all-tasks").classList.add("current-page");
 
 // Clear from DOM
 function clearTasks() {
@@ -13,6 +13,20 @@ function clearTasks() {
         task.remove();
     });
 };
+
+function switchTab(e) {
+    navTabs.forEach((tab) => {
+        tab.classList.remove("current-page");
+        e.target.classList.add("current-page");
+    });
+}
+
+const navTabs = document.querySelectorAll(".nav li");
+navTabs.forEach((tab) => {
+    tab.addEventListener("click", (e) => {
+        switchTab(e);
+    });
+});
 
 function setPriorityColor(priority) {
     if (priority == "Low") {
