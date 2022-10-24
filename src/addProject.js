@@ -1,3 +1,6 @@
+
+const projects = [];
+
 function createAddButton(button) {
     button.innerHTML = "";
     const addProjectButton = document.createElement("button");
@@ -7,6 +10,21 @@ function createAddButton(button) {
     addProjectButton.addEventListener("click", addProject);
     button.appendChild(addProjectButton);
 }
+
+function populateProjects() {
+    const projects_ul = document.querySelector("#projects");
+    const defaultProject = document.createElement("option");
+    defaultProject.value = "Default";
+    defaultProject.textContent = "Default";
+    projects_ul.innerHTML = "";
+    projects_ul.appendChild(defaultProject);
+    projects.forEach((project) => {
+        const option_el = document.createElement("option");
+        option_el.value = project;
+        option_el.innerText = project;
+        projects_ul.appendChild(option_el);
+    });
+};
 
 
 function addProject(e) {
@@ -28,6 +46,7 @@ function addProject(e) {
         projectItem.classList.add("project");
         if (!projectInput.value == "") {
             projectItem.textContent = projectInput.value;
+            projects.push(projectInput.value);
             projectList.appendChild(projectItem);
             projectInput.value = "";
             createAddButton(projectButton);
@@ -44,4 +63,4 @@ function addProject(e) {
     projectButton.appendChild(cancelButton);
 }
 
-export {addProject};
+export {addProject, projects, populateProjects};
