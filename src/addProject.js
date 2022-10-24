@@ -1,3 +1,5 @@
+import { defaultTasks, clearTasks } from "./index";
+import { renderTasks } from "./renderTasks";
 
 const projects = [];
 
@@ -9,6 +11,15 @@ function createAddButton(button) {
     addProjectButton.textContent = "Add Project";
     addProjectButton.addEventListener("click", addProject);
     button.appendChild(addProjectButton);
+}
+
+function renderProject(e) {
+    clearTasks();
+    defaultTasks.forEach((task, index) => {
+        if (task.project == e.target.innerText) {
+            renderTasks(task, index);
+        };
+    });
 }
 
 function populateProjects() {
@@ -48,6 +59,7 @@ function addProject(e) {
             projectItem.textContent = projectInput.value;
             projects.push(projectInput.value);
             projectList.appendChild(projectItem);
+            projectItem.addEventListener("click", renderProject);
             projectInput.value = "";
             createAddButton(projectButton);
         };
