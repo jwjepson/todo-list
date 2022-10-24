@@ -115,4 +115,4 @@ function renderUpcomingTasks() {
     });
 }
 
-export {defaultTasks, renderAllTasks, setPriorityColor};
+export {defaultTasks, renderAllTasks, setPriorityColor, clearTasks};
