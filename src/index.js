@@ -3,8 +3,10 @@ import {Task} from "./todos";
 import {isToday, parseISO, isThisWeek, isFuture} from 'date-fns'
 import {renderTasks} from "./renderTasks";
 import {addProject} from "./addProject";
+import {populateProjects} from "./addProject";
 
 const defaultTasks = [];
+
 document.querySelector(".all-tasks").classList.add("current-page");
 
 // Clear from DOM
@@ -58,6 +60,7 @@ const form = document.querySelector("form");
 
 addTask.addEventListener("click", () => {
     const addTaskButton = document.createElement("button");
+    populateProjects();
     addTaskButton.classList.add("add-task-button");
     addTaskButton.textContent = "Add Task";
     addTaskButton.setAttribute("type", "button");
