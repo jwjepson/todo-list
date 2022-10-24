@@ -69,7 +69,8 @@ addTask.addEventListener("click", () => {
         const description = document.querySelector("#description").value;
         const dueDate = document.querySelector("#date").value;
         const priority = document.querySelector("input[name=priority]:checked").value;
-        const task = new Task(title, description, dueDate, priority, "incomplete");
+        const project = document.querySelector("#projects").value;
+        const task = new Task(title, description, dueDate, priority, "incomplete", project);
         defaultTasks.push(task);
         taskForm.style.display = "none";
         taskOverlay.style.display = "none";
