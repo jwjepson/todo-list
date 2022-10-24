@@ -1,4 +1,5 @@
 import {defaultTasks, renderAllTasks} from "./index";
+import {populateProjects} from "./addProject";
 
 
 function editTask() {
@@ -14,6 +15,8 @@ function editTask() {
     document.querySelector("#description").value = task.description;
     document.querySelector("#date").value = task.dueDate;
     document.querySelector(`#${task.priority}-priority`).checked = true;
+    populateProjects();
+    document.querySelector("#projects").value = task.project;
     
     // Create Edit Button
     const addTaskButton = document.querySelector(".add-task-button");
@@ -32,6 +35,7 @@ function editTask() {
         task.description = document.querySelector("#description").value;
         task.dueDate = document.querySelector("#date").value;
         task.priority = document.querySelector("input[name=priority]:checked").value;
+        task.project = document.querySelector("#projects").value;
         taskForm.style.display = "none";
         taskOverlay.style.display = "none";
         editTaskButton.remove();
