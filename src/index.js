@@ -2,10 +2,15 @@ import "./styles.css";
 import {Task} from "./todos";
 import {isToday, parseISO, isThisWeek, isFuture} from 'date-fns'
 import {renderTasks} from "./renderTasks";
-import {addProject} from "./addProject";
+import {addProject, projects} from "./addProject";
 import {populateProjects} from "./addProject";
+import {renderProjects} from "./renderProjects";
 
-const defaultTasks = [];
+const defaultTasks = JSON.parse(localStorage.getItem("defaultTasks")) || [];
+
+console.log(defaultTasks);
+renderAllTasks();
+renderProjects();
 
 document.querySelector(".all-tasks").classList.add("current-page");
 
@@ -16,6 +21,7 @@ function clearTasks() {
         task.remove();
     });
 };
+
 
 function switchTab(e) {
     const projectTabs = document.querySelectorAll(".projects li");
@@ -76,6 +82,7 @@ addTask.addEventListener("click", () => {
         const project = document.querySelector("#projects").value;
         const task = new Task(title, description, dueDate, priority, "incomplete", project);
         defaultTasks.push(task);
+        localStorage.setItem("defaultTasks", JSON.stringify(defaultTasks));
         taskForm.style.display = "none";
         taskOverlay.style.display = "none";
         renderAllTasks();
