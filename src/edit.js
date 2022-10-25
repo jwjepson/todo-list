@@ -36,6 +36,7 @@ function editTask() {
         task.dueDate = document.querySelector("#date").value;
         task.priority = document.querySelector("input[name=priority]:checked").value;
         task.project = document.querySelector("#projects").value;
+        localStorage.setItem("defaultTasks", JSON.stringify(defaultTasks));
         taskForm.style.display = "none";
         taskOverlay.style.display = "none";
         editTaskButton.remove();
