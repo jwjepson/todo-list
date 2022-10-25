@@ -1,7 +1,7 @@
 import { defaultTasks, clearTasks, switchTab } from "./index";
 import { renderTasks } from "./renderTasks";
 
-const projects = [];
+const projects = JSON.parse(localStorage.getItem("projects")) || [];
 
 function createAddButton(button) {
     button.innerHTML = "";
@@ -58,6 +58,7 @@ function addProject(e) {
         if (!projectInput.value == "") {
             projectItem.textContent = projectInput.value;
             projects.push(projectInput.value);
+            localStorage.setItem("projects", JSON.stringify(projects));
             projectList.appendChild(projectItem);
             projectItem.addEventListener("click", renderProject);
             projectItem.addEventListener("click", switchTab);
@@ -79,4 +80,4 @@ function addProject(e) {
     projectButton.appendChild(cancelButton);
 }
 
-export {addProject, projects, populateProjects};
+export {addProject, projects, populateProjects, renderProject};
