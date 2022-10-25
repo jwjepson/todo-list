@@ -122,7 +122,7 @@ body {
 }
 
 .add-task-form {
-    height: 340px;
+    height: 380px;
     width: 500px;
     background-color:#EFEFEF;
     position: fixed;
@@ -311,4 +311,12 @@ body {
     background-color:#ddd;
     border: none;
     width: 60px;
+}
+
+#projects {
+    padding: 6px;
+    margin-left: 10px;
+    border-radius: 1em;
+    background-color:#ddd;
+    border: none;
 }
