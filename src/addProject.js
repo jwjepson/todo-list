@@ -69,6 +69,9 @@ function addProject(e) {
     cancelButton.setAttribute("type", "button");
     cancelButton.textContent = "Cancel";
     cancelButton.classList.add("cancel-button");
+    cancelButton.addEventListener("click", () => {
+        createAddButton(projectButton);
+    })
 
     projectButton.appendChild(projectInput);
     projectButton.appendChild(addButton);
