@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -31,7 +30,7 @@ body {
 .sidebar {
     grid-column: 1 / 2;
     background-color: #EFEFEF;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .nav {
@@ -63,7 +62,7 @@ body {
     border-radius: 1rem;
 }
 
-.nav > li:hover, .all-tasks.current-page, .todays-tasks.current-page, .upcoming-tasks.current-page, #add-project:hover, .add-button:hover, .cancel-button:hover {
+.nav > li:hover, .all-tasks.current-page, .todays-tasks.current-page, .upcoming-tasks.current-page, #add-project:hover, .add-button:hover, .cancel-button:hover, .project.current-page, .projects > li:hover {
     background-color: #FF3B3F;
     color: white;
     cursor: pointer;
@@ -311,12 +310,4 @@ body {
     background-color:#ddd;
     border: none;
     width: 60px;
-}
-
-#projects {
-    padding: 6px;
-    margin-left: 10px;
-    border-radius: 1em;
-    background-color:#ddd;
-    border: none;
 }
