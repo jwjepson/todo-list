@@ -18,10 +18,14 @@ function clearTasks() {
 };
 
 function switchTab(e) {
+    const projectTabs = document.querySelectorAll(".projects li");
+    projectTabs.forEach((tab) => {
+        tab.classList.remove("current-page");
+    });
     navTabs.forEach((tab) => {
         tab.classList.remove("current-page");
-        e.target.classList.add("current-page");
     });
+    e.target.classList.add("current-page");
 }
 
 const navTabs = document.querySelectorAll(".nav li");
@@ -115,4 +119,4 @@ function renderUpcomingTasks() {
     });
 }
 
-export {defaultTasks, renderAllTasks, setPriorityColor, clearTasks};
+export {defaultTasks, renderAllTasks, setPriorityColor, clearTasks, switchTab};
