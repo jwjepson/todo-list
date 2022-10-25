@@ -15,6 +15,7 @@ function markComplete() {
         taskButton.classList.remove("checked");
         task_el.classList.remove("complete");       
     }
+    localStorage.setItem("defaultTasks", JSON.stringify(defaultTasks));
 }
 
 export {markComplete};
