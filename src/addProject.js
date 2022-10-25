@@ -1,4 +1,4 @@
-import { defaultTasks, clearTasks } from "./index";
+import { defaultTasks, clearTasks, switchTab } from "./index";
 import { renderTasks } from "./renderTasks";
 
 const projects = [];
@@ -60,6 +60,7 @@ function addProject(e) {
             projects.push(projectInput.value);
             projectList.appendChild(projectItem);
             projectItem.addEventListener("click", renderProject);
+            projectItem.addEventListener("click", switchTab);
             projectInput.value = "";
             createAddButton(projectButton);
         };
